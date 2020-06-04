@@ -3,7 +3,7 @@ html
   head
     title Usuarios
   body 
-    form( method="POST") 
+    form(action="/users" method="POST") 
       input(type="email" name="email" placeholder="Correo electronico")
       input(type="password" name="password" placeholder="Contrasña")
       input(type="submit" value="Crear cuenta")
