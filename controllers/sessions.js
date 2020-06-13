@@ -9,6 +9,7 @@ module.exports = {
         .then(user=>{
           if (user){
             req.session.id = user.id;
+            //res.json({usuario: req.session.id});
           }
           res.json(user)
         })

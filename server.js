@@ -11,14 +11,13 @@ const Sequelize = require('sequelize');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
+
 const app = express();
 
 const tasksRoutes = require('./routes/tasks_routes');
 const registrationRoutes = require('./routes/registrations_routes');
 const sessionsRoutes = require('./routes/sessions_routes');
-//const findUserMiddleware = require('./middlewares/find_user');
-const findUser = require('./middlewares/find_user');
-//const tasks = require('./controllers/tasks');
+const findUserMiddleware = require('./middlewares/find_user');
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -27,19 +26,19 @@ app.use(methodOverride('_method'));
 app.set('view engine','pug');
 
 app.use(session({
-  secret :[';lkpqouerpoiqw;mzvn13785751034sdfhlesuqwery zf','mjggswhcvkhterwuxbncvcjhs647352874jdbvd'],
+  secret :[';lkpqouerpoiqw;mzvn13785751034sdfhlesuqweryzf','mjggswhcvkhterwuxbncvcjhs647352874jdbvd'],
   saveUninitialized: false,
   resave: false
 }));
 
-app.use(findUser);
+app.use(findUserMiddleware);
 app.use(tasksRoutes);
 app.use(registrationRoutes);
 app.use(sessionsRoutes);
 
 app.get('/',function(req,res){
   //res.json(req.user)
-  res.render('home',{user : req.user});
+  res.render('home',{usuario: req.user});
 })
 
 
